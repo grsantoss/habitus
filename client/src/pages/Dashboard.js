@@ -274,4 +274,17 @@ const Dashboard = () => {
                   <div className="flex items-center justify-between">
                     <div className="flex-1 min-w-0">
                       <p className="text-sm font-medium text-primary-600 truncate">{scenario.name}</p>
-                      <p className="text-sm text-gray-
+                      <p className="text-sm text-gray-500">{formatDate(scenario.modifiedAt)}</p>
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default Dashboard;

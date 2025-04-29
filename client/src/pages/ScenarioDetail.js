@@ -282,4 +282,100 @@ const ScenarioDetail = () => {
 
         {activeTab === 'expenses' && (
           <div className="p-6">
-            <h3 className="text
+            <h3 className="text-lg font-medium text-gray-900 mb-4">Despesas</h3>
+            <div className="overflow-x-auto">
+              <table className="min-w-full divide-y divide-gray-200">
+                <thead className="bg-gray-50">
+                  <tr>
+                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Item</th>
+                    {Array.from({ length: 12 }, (_, i) => (
+                      <th key={i} scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        {['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'][i]}
+                      </th>
+                    ))}
+                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total</th>
+                  </tr>
+                </thead>
+                <tbody className="bg-white divide-y divide-gray-200">
+                  {scenario.data.expenses.map((item, index) => (
+                    <tr key={index} className={item.isModified ? 'bg-yellow-50' : ''}>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{item.name}</td>
+                      {item.values.map((value, i) => (
+                        <td key={i} className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                          {formatCurrency(value)}
+                        </td>
+                      ))}
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        {formatCurrency(item.total)}
+                      </td>
+                    </tr>
+                  ))}
+                  <tr className="bg-gray-50">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Total</td>
+                    {scenario.summary.monthlyExpenses.map((value, i) => (
+                      <td key={i} className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        {formatCurrency(value)}
+                      </td>
+                    ))}
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                      {formatCurrency(scenario.summary.annualExpenses)}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
+
+        {activeTab === 'investments' && (
+          <div className="p-6">
+            <h3 className="text-lg font-medium text-gray-900 mb-4">Investimentos</h3>
+            <div className="overflow-x-auto">
+              <table className="min-w-full divide-y divide-gray-200">
+                <thead className="bg-gray-50">
+                  <tr>
+                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Item</th>
+                    {Array.from({ length: 12 }, (_, i) => (
+                      <th key={i} scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        {['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'][i]}
+                      </th>
+                    ))}
+                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total</th>
+                  </tr>
+                </thead>
+                <tbody className="bg-white divide-y divide-gray-200">
+                  {scenario.data.investments.map((item, index) => (
+                    <tr key={index} className={item.isModified ? 'bg-yellow-50' : ''}>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{item.name}</td>
+                      {item.values.map((value, i) => (
+                        <td key={i} className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                          {formatCurrency(value)}
+                        </td>
+                      ))}
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        {formatCurrency(item.total)}
+                      </td>
+                    </tr>
+                  ))}
+                  <tr className="bg-gray-50">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Total</td>
+                    {scenario.summary.monthlyInvestments.map((value, i) => (
+                      <td key={i} className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        {formatCurrency(value)}
+                      </td>
+                    ))}
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                      {formatCurrency(scenario.summary.annualInvestments)}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default ScenarioDetail;

@@ -117,4 +117,21 @@ const SpreadsheetUpload = () => {
                       aria-hidden="true"
                     >
                       <path
-                        d="M28 8H12a4 4 0 00-4 4v20m32-12v
+                        d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0-8l-8 8-4-4-6 6"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default SpreadsheetUpload;
